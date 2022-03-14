@@ -1,4 +1,4 @@
-# Ball-go-Shoot
+# Ball go Shoot
 
    You play as a blue ball in an infinite void, fighting to destroy the red balls. The art style is inspired by Dani's balls.
 
