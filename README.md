@@ -1,5 +1,6 @@
 # Ball-go-Shoot
-  It's pretty self explanatory, you are a blue ball in an infinite void, fighting to destroy the red balls. The art style is inspired by Dani's balls.
+
+It's pretty self explanatory, you are a blue ball in an infinite void, fighting to destroy the red balls. The art style is inspired by Dani's balls.
 
    You have two weapons at your dispense, click 1 to switch to your pistol, which has a slow fire-rate but very good damage, click 2 to equip the assault rife, which as you can expect shoots a lot faster.   
 
