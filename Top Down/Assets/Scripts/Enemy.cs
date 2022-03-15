@@ -86,6 +86,7 @@ public class Enemy : MonoBehaviour
         {
             GameObject.Find("Weapon").GetComponent<Weapon>().akAmmo += 30;
         }
+        GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
         Destroy(gameObject);
     }
 }
