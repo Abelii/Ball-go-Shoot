@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerMove : MonoBehaviour
 {
-    float moveSpeed;
+    public float moveSpeed;
     Transform firePoint;
     Animator anim;
     Weapon weaponScript;
