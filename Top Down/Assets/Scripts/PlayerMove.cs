@@ -223,6 +223,7 @@ public class PlayerMove : MonoBehaviour
         scoreObject.SetActive(true);
         transform.position = new Vector2(0, 0);
         score = 0;
+        health = 100;
         weaponScript.pistolAmmo = 10;
         weaponScript.pistolTotalAmmo = 30;
         weaponScript.akAmmo = 60;
