@@ -82,14 +82,18 @@ public class PlayerMove : MonoBehaviour
 
     void MovementControls()
     {
-        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
-        transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + moveSpeed), Time.deltaTime);}
-        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
-        transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y - moveSpeed), Time.deltaTime);}
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
-        transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x - moveSpeed, transform.position.y), Time.deltaTime);}
-        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
-        transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x + moveSpeed, transform.position.y), Time.deltaTime);}
+        if(alive == true)
+        {
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + moveSpeed), Time.deltaTime);}
+            if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y - moveSpeed), Time.deltaTime);}
+            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x - moveSpeed, transform.position.y), Time.deltaTime);}
+            if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x + moveSpeed, transform.position.y), Time.deltaTime);}
+        }
+
     }
 
     void FaceMouse()
