@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if(isSpawning == false && enemyNumber < 30)
+        if(isSpawning == false && enemyNumber < 30 && GameObject.Find("Player").GetComponent<PlayerMove>().alive == true)
         {
             isSpawning = true;
             Invoke("Spawn", 1f);

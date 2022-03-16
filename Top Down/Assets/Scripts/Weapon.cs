@@ -44,7 +44,7 @@ public class Weapon : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && isWaiting == false && isReloading == false) {
+        if (Input.GetKey(KeyCode.Mouse0) && isWaiting == false && isReloading == false && GameObject.Find("Player").GetComponent<PlayerMove>().alive == true) {
             Shoot();}
 
         if (currentWeapon == "pistol") {

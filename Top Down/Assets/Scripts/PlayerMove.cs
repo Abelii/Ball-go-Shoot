@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerMove : MonoBehaviour
@@ -10,22 +11,40 @@ public class PlayerMove : MonoBehaviour
     Animator anim;
     Weapon weaponScript;
     public int health;
+    public GameObject YSW;
+    public GameObject respawn;
+    public GameObject ammoObject;
+    public GameObject healthObject;
+    public GameObject scoreObject;
     TextMeshProUGUI healthText;
     TextMeshProUGUI scoreText;
+    TextMeshProUGUI scoreTextDie;
     public int score;
     public int highScore;
-    bool isDying;
+    public bool isDying;
 
     bool isMinusTen;
     int damage;
     bool coloror;
 
+    public bool alive = true;
     void Start()
     {
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<AudioSource>().enabled = true;
+        GameObject.Find("Weapon").GetComponent<AudioSource>().enabled = true;
+        GameObject.Find("Weapon").GetComponent<SpriteRenderer>().enabled = true;
+        alive = true;
+        ammoObject.SetActive(true);
+        healthObject.SetActive(true);
+        scoreObject.SetActive(true);
+        YSW.SetActive(false);
+        respawn.SetActive(false);
         score = 0;
         highScore = PlayerPrefs.GetInt("highScore");
-        healthText = GameObject.Find("Health").GetComponent<TextMeshProUGUI>();
-        scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
+        healthText = healthObject.GetComponent<TextMeshProUGUI>();
+        scoreText = scoreObject.GetComponent<TextMeshProUGUI>();
+        scoreTextDie = YSW.GetComponent<TextMeshProUGUI>();
         health = 100;
         moveSpeed = 4;
         firePoint = GameObject.Find("FirePoint").transform;
@@ -34,6 +53,7 @@ public class PlayerMove : MonoBehaviour
         isMinusTen = false;
         NormalColor();
         coloror = false;
+        isDying = false;
     }
 
     void Update()
@@ -41,7 +61,7 @@ public class PlayerMove : MonoBehaviour
         MovementControls();
         FaceMouse();
         healthText.text = health.ToString();
-        if (health <= 0)
+        if (health <= 0 && isDying == false)
         {
             isDying = true;
             Invoke("Die", 0.2f);
@@ -57,6 +77,7 @@ public class PlayerMove : MonoBehaviour
         {
             health = 0;
         }
+        //respawn.GetComponent<Button>().onClick.AddListener(Respawn);
     }
 
     void MovementControls()
@@ -174,13 +195,38 @@ public class PlayerMove : MonoBehaviour
 
     void Die()
     {
-        transform.position = new Vector2(0, 0);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gameObject.GetComponent<AudioSource>().enabled = false;
+        GameObject.Find("Weapon").GetComponent<AudioSource>().enabled = false;
+        GameObject.Find("Weapon").GetComponent<SpriteRenderer>().enabled = false;
+        scoreTextDie.text = "YOUR SCORE WAS " + score + " OUT OF " + highScore;
+        ammoObject.SetActive(false);
+        healthObject.SetActive(false);
+        scoreObject.SetActive(false);
+        YSW.SetActive(true);
+        respawn.SetActive(true);
+        alive = false;
+        isDying = false;
         health = 100;
+    }
+
+    void Respawn()
+    {   
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<AudioSource>().enabled = true;
+        GameObject.Find("Weapon").GetComponent<AudioSource>().enabled = true;
+        GameObject.Find("Weapon").GetComponent<SpriteRenderer>().enabled = true;
+        YSW.SetActive(false);
+        respawn.SetActive(false);
+        ammoObject.SetActive(true);
+        healthObject.SetActive(true);
+        scoreObject.SetActive(true);
+        transform.position = new Vector2(0, 0);
         score = 0;
         weaponScript.pistolAmmo = 10;
         weaponScript.pistolTotalAmmo = 30;
         weaponScript.akAmmo = 60;
         weaponScript.akTotalAmmo = 180;
-        isDying = false;
+        alive = true;
     }
 }

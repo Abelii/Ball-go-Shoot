@@ -54,6 +54,9 @@ public class Enemy : MonoBehaviour
         if (Vector2.Distance(GameObject.Find("Player").transform.position, transform.position) > 30){
             Destroy(gameObject);
         }
+        if (GameObject.Find("Player").GetComponent<PlayerMove>().alive == false){
+            Destroy(gameObject);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other) 
