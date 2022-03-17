@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject ammoObject;
     public GameObject healthObject;
     public GameObject scoreObject;
+    public ParticleSystem dmgPP;
+    public Button respawnButton;
     TextMeshProUGUI healthText;
     TextMeshProUGUI scoreText;
     TextMeshProUGUI scoreTextDie;
@@ -26,6 +29,7 @@ public class PlayerMove : MonoBehaviour
     bool isMinusTen;
     int damage;
     bool coloror;
+    bool isHighScore;
 
     public bool alive = true;
     void Start()
@@ -54,10 +58,12 @@ public class PlayerMove : MonoBehaviour
         NormalColor();
         coloror = false;
         isDying = false;
+        isHighScore = false;
     }
 
     void Update()
     {
+        respawnButton.onClick.AddListener(Respawn);
         MovementControls();
         FaceMouse();
         healthText.text = health.ToString();
@@ -69,6 +75,7 @@ public class PlayerMove : MonoBehaviour
         }
         if (score > highScore)
         {
+            isHighScore = true;
             PlayerPrefs.SetInt("highScore", score);
         }
         highScore = PlayerPrefs.GetInt("highScore");
@@ -181,6 +188,7 @@ public class PlayerMove : MonoBehaviour
             health -= damage;
             isMinusTen = false;
             GetComponent<AudioSource>().Play();
+            dmgPP.Play();
             if(coloror == false)
             {
                 coloror = true;
@@ -199,11 +207,13 @@ public class PlayerMove : MonoBehaviour
 
     void Die()
     {
+        dmgPP.Stop();
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<AudioSource>().enabled = false;
         GameObject.Find("Weapon").GetComponent<AudioSource>().enabled = false;
         GameObject.Find("Weapon").GetComponent<SpriteRenderer>().enabled = false;
-        scoreTextDie.text = "YOUR SCORE WAS " + score + " OUT OF " + highScore;
+        if(isHighScore == false){scoreTextDie.text = "YOUR SCORE WAS " + score + " OUT OF " + highScore + "!";}
+        else if(isHighScore == true){scoreTextDie.text = "NEW HIGH SCORE, " + highScore + "!";}
         ammoObject.SetActive(false);
         healthObject.SetActive(false);
         scoreObject.SetActive(false);
@@ -216,6 +226,8 @@ public class PlayerMove : MonoBehaviour
 
     void Respawn()
     {   
+        Debug.Log("Respawning");
+        isHighScore = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         gameObject.GetComponent<AudioSource>().enabled = true;
         GameObject.Find("Weapon").GetComponent<AudioSource>().enabled = true;

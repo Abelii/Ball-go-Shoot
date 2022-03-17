@@ -52,10 +52,10 @@ public class Enemy : MonoBehaviour
             }
         }
         if (Vector2.Distance(GameObject.Find("Player").transform.position, transform.position) > 30){
-            Destroy(gameObject);
+            Invoke("SimpleDie", 0.06f);
         }
         if (GameObject.Find("Player").GetComponent<PlayerMove>().alive == false){
-            Destroy(gameObject);
+            Invoke("SimpleDie", 0.06f);
         }
     }
 
@@ -92,6 +92,11 @@ public class Enemy : MonoBehaviour
         {
             GameObject.Find("Weapon").GetComponent<Weapon>().akAmmo += 30;
         }
+        GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
+        Destroy(gameObject);
+    }
+    void SimpleDie()
+    {
         GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
         Destroy(gameObject);
     }
