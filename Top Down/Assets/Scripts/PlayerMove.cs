@@ -59,11 +59,11 @@ public class PlayerMove : MonoBehaviour
         coloror = false;
         isDying = false;
         isHighScore = false;
+        respawnButton.onClick.AddListener(Respawn);
     }
 
     void Update()
     {
-        respawnButton.onClick.AddListener(Respawn);
         MovementControls();
         FaceMouse();
         healthText.text = health.ToString();
