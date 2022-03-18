@@ -47,6 +47,10 @@ public class Enemy : MonoBehaviour
                 GetComponentInChildren<ParticleSystem>().Play();
                 GetComponentInChildren<AudioSource>().Play();
                 playerMove.score = playerMove.score += 1;
+                int ra = Random.Range(1,5);
+                if(ra == 1){Instantiate(am, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
+                if(ra == 2){Instantiate(hp, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
+                GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
                 Invoke("Die", 0.4f);
                 Destroy(GetComponent<CircleCollider2D>());
                 Destroy(GetComponent<Rigidbody2D>());
@@ -65,7 +69,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.tag == "BulletPistol")
         {
-            health = health - 20;
+            health = health - 15;
             GetComponent<SpriteRenderer>().color = new Color32(255, 100, 0, 255);
             GetComponent<AudioSource>().Play();
             Invoke("NormalColor", 0.1f);
@@ -86,10 +90,6 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        int ra = Random.Range(1,3);
-        if(ra == 1){Instantiate(am, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
-        if(ra == 2){Instantiate(hp, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
-        GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
         Destroy(gameObject);
     }
     void SimpleDie()

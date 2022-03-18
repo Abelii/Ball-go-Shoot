@@ -10,16 +10,16 @@ public class AmmoRefill : MonoBehaviour{
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
             
-            if(w.currentWeapon == "pistol" && w.pistolAmmo <= 8){
-            w.pistolAmmo += 2;
+            if(w.currentWeapon == "pistol" && w.pistolAmmo <= 6){
+            w.pistolAmmo += 4;
             Destroy(GetComponent<SpriteRenderer>());
             Destroy(GetComponent<CircleCollider2D>());
             GetComponent<ParticleSystem>().Play();
             Invoke("Destroy", 0.4f);
             }
 
-            if(w.currentWeapon == "AK" && w.akAmmo <= 50){
-            w.akAmmo += 10;
+            if(w.currentWeapon == "AK" && w.akAmmo <= 40){
+            w.akAmmo += 20;
             Destroy(GetComponent<SpriteRenderer>());
             Destroy(GetComponent<CircleCollider2D>());
             GetComponent<ParticleSystem>().Play();
