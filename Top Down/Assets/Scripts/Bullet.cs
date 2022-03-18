@@ -14,8 +14,11 @@ public class Bullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Invoke("DeRender", 0.02f);
-        Invoke("Destroy", 0.1f);
+        if(other.tag != "HF" && other.tag != "AF")
+        {
+            Invoke("DeRender", 0.02f);
+            Invoke("Destroy", 0.1f);
+        }
     }
 
     void OnBecameInvisible() {

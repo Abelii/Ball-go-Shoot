@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     PlayerMove playerMove;
     Vector3 size;
     float sizeNumber;
+    public GameObject am;
+    public GameObject hp;
     void Start()
     {
         health = Random.Range(90, 130);
@@ -84,14 +86,9 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        if(GameObject.Find("Weapon").GetComponent<Weapon>().pistolAmmo <= 5 && GameObject.Find("Weapon").GetComponent<Weapon>().pistolAmmo > 0)
-        {
-            GameObject.Find("Weapon").GetComponent<Weapon>().pistolAmmo += 5;
-        }
-        if(GameObject.Find("Weapon").GetComponent<Weapon>().akAmmo <= 30 && GameObject.Find("Weapon").GetComponent<Weapon>().akAmmo > 0)
-        {
-            GameObject.Find("Weapon").GetComponent<Weapon>().akAmmo += 30;
-        }
+        int ra = Random.Range(1,3);
+        if(ra == 1){Instantiate(am, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
+        if(ra == 2){Instantiate(hp, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
         GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
         Destroy(gameObject);
     }
