@@ -8,7 +8,7 @@
   </head>
   <body style="text-align: center; background-color: #1B1B1B;">
     <canvas id="unity-canvas" width=1280 height=720 style="width: 1280px; height: 720px; background: #1B1B1B"></canvas>
-    <script src="Build/topdownwebgl.loader.js"></script>
+    <script src="Build/docs.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -19,9 +19,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/topdownwebgl.data",
-        frameworkUrl: "Build/topdownwebgl.framework.js",
-        codeUrl: "Build/topdownwebgl.wasm",
+        dataUrl: "Build/docs.data",
+        frameworkUrl: "Build/docs.framework.js",
+        codeUrl: "Build/docs.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Abelii",
         productName: "Ball go Shoot",
