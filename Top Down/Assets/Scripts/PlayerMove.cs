@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class PlayerMove : MonoBehaviour
     public int health;
     public GameObject YSW;
     public GameObject respawn;
+    public GameObject menuBTN;
     public GameObject ammoObject;
     public GameObject healthObject;
     public GameObject scoreObject;
     public ParticleSystem dmgPP;
     public Button respawnButton;
+    public Button menuButton;
     TextMeshProUGUI healthText;
     TextMeshProUGUI scoreText;
     TextMeshProUGUI scoreTextDie;
@@ -45,6 +48,7 @@ public class PlayerMove : MonoBehaviour
         scoreObject.SetActive(true);
         YSW.SetActive(false);
         respawn.SetActive(false);
+        menuBTN.SetActive(false);
         score = 0;
         highScore = PlayerPrefs.GetInt("highScore");
         healthText = healthObject.GetComponent<TextMeshProUGUI>();
@@ -61,8 +65,10 @@ public class PlayerMove : MonoBehaviour
         coloror = false;
         isDying = false;
         isHighScore = false;
-        respawnButton.onClick.AddListener(Respawn);
         dmgPP.gameObject.SetActive(true);
+        respawnButton.onClick.AddListener(Respawn);
+        menuButton.onClick.AddListener(MainMenu);
+        
     }
 
     void Update()
@@ -237,6 +243,7 @@ public class PlayerMove : MonoBehaviour
         dmgPP.Stop();
         dmgPP.gameObject.SetActive(false);
         YSW.SetActive(true);
+        menuBTN.SetActive(true);
         respawn.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<AudioSource>().enabled = false;
@@ -247,7 +254,6 @@ public class PlayerMove : MonoBehaviour
         ammoObject.SetActive(false);
         healthObject.SetActive(false);
         scoreObject.SetActive(false);
-
         alive = false;
         isDying = false;
         health = 100;
@@ -255,6 +261,7 @@ public class PlayerMove : MonoBehaviour
 
     void Respawn()
     {   
+        menuBTN.SetActive(false);
         Debug.Log("Respawning");
         isHighScore = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
@@ -275,5 +282,9 @@ public class PlayerMove : MonoBehaviour
         weaponScript.akAmmo = 60;
         weaponScript.akTotalAmmo = 180;
         alive = true;
+    }
+    void MainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
