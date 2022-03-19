@@ -111,18 +111,18 @@ public class Weapon : MonoBehaviour
         firePoint.localPosition = new Vector2(0f, 0.5f);
         fireRate = 0.5f; 
         ammoCount.text = pistolAmmo + "/" + pistolTotalAmmo;
-        GameObject.Find("Player").GetComponent<PlayerMove>().moveSpeed = 4f;
-
+        GameObject.Find("Player").GetComponent<PlayerMove>().moveSpeed = 5f;
     }
 
     void AKSettings()
-    {
+    {   
         transform.localPosition = new Vector2(0f, 1.1f);
         transform.localScale = new Vector3(0.2f, 1f, 1f);
         firePoint.localPosition = new Vector2(0f, 0.5f);
         fireRate = 0.1f; 
         ammoCount.text = akAmmo + "/" + akTotalAmmo;
-        GameObject.Find("Player").GetComponent<PlayerMove>().moveSpeed = 3f;
+        GameObject.Find("Player").GetComponent<PlayerMove>().moveSpeed = 4f;
+        
     }
 
     void Ammo()

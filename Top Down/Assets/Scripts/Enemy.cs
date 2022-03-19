@@ -13,8 +13,10 @@ public class Enemy : MonoBehaviour
     float sizeNumber;
     public GameObject am;
     public GameObject hp;
+    Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         health = Random.Range(90, 130);
         enemySpeed = Random.Range(0.6f, 4f);
         damage = Random.Range(8, 16);
@@ -47,8 +49,8 @@ public class Enemy : MonoBehaviour
                 GetComponentInChildren<ParticleSystem>().Play();
                 GetComponentInChildren<AudioSource>().Play();
                 playerMove.score = playerMove.score += 1;
-                int ra = Random.Range(1,5);
-                if(ra == 1){Instantiate(am, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
+                int ra = Random.Range(1, 18);
+                if(ra == 1 || ra == 3){Instantiate(am, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
                 if(ra == 2){Instantiate(hp, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
                 GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
                 Invoke("Die", 0.4f);
@@ -70,14 +72,14 @@ public class Enemy : MonoBehaviour
         if(other.tag == "BulletPistol")
         {
             health = health - 15;
-            GetComponent<SpriteRenderer>().color = new Color32(255, 100, 0, 255);
+            GetComponent<SpriteRenderer>().color = new Color32(200, 0, 0, 255);
             GetComponent<AudioSource>().Play();
             Invoke("NormalColor", 0.1f);
         }
         if(other.tag == "BulletAK")
         {
             health = health - 5;
-            GetComponent<SpriteRenderer>().color = new Color32(255, 100, 0, 255);
+            GetComponent<SpriteRenderer>().color = new Color32(200, 0, 0, 255);
             GetComponent<AudioSource>().Play();
             Invoke("NormalColor", 0.1f);
         }
@@ -85,7 +87,7 @@ public class Enemy : MonoBehaviour
 
     void NormalColor()
     {
-        GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+        GetComponent<SpriteRenderer>().color = new Color(255, 200, 200, 255);
     }
 
     void Die()

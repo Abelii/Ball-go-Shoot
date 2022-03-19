@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     public int score;
     public int highScore;
     public bool isDying;
+    bool diag;
 
     bool isMinusTen;
     int damage;
@@ -50,16 +51,18 @@ public class PlayerMove : MonoBehaviour
         scoreText = scoreObject.GetComponent<TextMeshProUGUI>();
         scoreTextDie = YSW.GetComponent<TextMeshProUGUI>();
         health = 100;
-        moveSpeed = 4;
+        moveSpeed = 8;
         firePoint = GameObject.Find("FirePoint").transform;
         weaponScript = GameObject.Find("Weapon").GetComponent<Weapon>();
         anim = GameObject.Find("Weapon").GetComponent<Animator>();
         isMinusTen = false;
         NormalColor();
+        diag = false;
         coloror = false;
         isDying = false;
         isHighScore = false;
         respawnButton.onClick.AddListener(Respawn);
+        dmgPP.gameObject.SetActive(true);
     }
 
     void Update()
@@ -84,12 +87,22 @@ public class PlayerMove : MonoBehaviour
         {
             health = 0;
         }
-        //respawn.GetComponent<Button>().onClick.AddListener(Respawn);
+        if(Input.GetKey(KeyCode.W) && (Input.GetKey(KeyCode.A))){
+            diag = true;
+        } else if(Input.GetKey(KeyCode.W) && (Input.GetKey(KeyCode.D))){
+            diag = true;
+        } else if(Input.GetKey(KeyCode.S) && (Input.GetKey(KeyCode.A))){
+            diag = true;
+        } else if(Input.GetKey(KeyCode.S) && (Input.GetKey(KeyCode.D))){
+            diag = true;
+        } else {diag = false;}
+
     }
 
     void MovementControls()
     {
-        if(alive == true)
+        print(diag);
+        if(alive == true && diag == false)
         {
             if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
                 transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + moveSpeed), Time.deltaTime);}
@@ -99,7 +112,21 @@ public class PlayerMove : MonoBehaviour
                 transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x - moveSpeed, transform.position.y), Time.deltaTime);}
             if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
                 transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x + moveSpeed, transform.position.y), Time.deltaTime);}
+        } 
+        
+        
+        if(alive == true && diag == true)
+        {
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y + moveSpeed/1.75f), Time.deltaTime);}
+            if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y - moveSpeed/1.75f), Time.deltaTime);}
+            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x - moveSpeed/1.75f, transform.position.y), Time.deltaTime);}
+            if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
+                transform.position = Vector2.Lerp(transform.position, new Vector3(transform.position.x + moveSpeed/1.75f, transform.position.y), Time.deltaTime);}
         }
+        
 
     }
 
@@ -192,7 +219,7 @@ public class PlayerMove : MonoBehaviour
             if(coloror == false)
             {
                 coloror = true;
-                GetComponent<SpriteRenderer>().color = new Color32(0, 255, 255, 255);
+                GetComponent<SpriteRenderer>().color = new Color32(200, 255, 255, 255);
                 Invoke("NormalColor", 0.1f);
             }
         }
@@ -201,13 +228,16 @@ public class PlayerMove : MonoBehaviour
 
     void NormalColor()
     {
-        GetComponent<SpriteRenderer>().color = new Color32(0, 179, 255, 255);
+        GetComponent<SpriteRenderer>().color = new Color32(140, 215, 255, 255);
         coloror = false;
     }
 
     void Die()
     {
         dmgPP.Stop();
+        dmgPP.gameObject.SetActive(false);
+        YSW.SetActive(true);
+        respawn.SetActive(true);
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<AudioSource>().enabled = false;
         GameObject.Find("Weapon").GetComponent<AudioSource>().enabled = false;
@@ -217,8 +247,7 @@ public class PlayerMove : MonoBehaviour
         ammoObject.SetActive(false);
         healthObject.SetActive(false);
         scoreObject.SetActive(false);
-        YSW.SetActive(true);
-        respawn.SetActive(true);
+
         alive = false;
         isDying = false;
         health = 100;
@@ -237,6 +266,7 @@ public class PlayerMove : MonoBehaviour
         ammoObject.SetActive(true);
         healthObject.SetActive(true);
         scoreObject.SetActive(true);
+        dmgPP.gameObject.SetActive(true);
         transform.position = new Vector2(0, 0);
         score = 0;
         health = 100;
