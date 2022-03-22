@@ -23,7 +23,6 @@ public class Weapon : MonoBehaviour
     public int akAmmo;
     public int akTotalAmmo;
     bool isReloading;
-    bool isDead;
     
     
     void Start()
@@ -40,7 +39,6 @@ public class Weapon : MonoBehaviour
         akTotalAmmo = 180;
         akAmmo = 60;
         isReloading = false;
-        isDead = false;
     }
     void Update()
     {

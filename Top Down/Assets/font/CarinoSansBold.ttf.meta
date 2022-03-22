@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e7710e5161c70954fb6d5dc89024d902
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Carino Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a64f9b34b26af3d4292b8c82c682d9bb, type: 3}
+  - {fileID: 12800000, guid: 32159d864db5f71438de2881ab115142, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

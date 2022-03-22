@@ -16,6 +16,14 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     void Start()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+        if(Vector2.Distance(GameObject.Find("Player").transform.position, transform.position) < 8){
+            SimpleDie();
+        } else {
+            GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<CircleCollider2D>().enabled = true;
+        }
         rb = GetComponent<Rigidbody2D>();
         health = Random.Range(90, 130);
         enemySpeed = Random.Range(0.6f, 4f);

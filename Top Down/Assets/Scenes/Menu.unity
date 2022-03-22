@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c706afe98789c7542abf422c9e4506bb, type: 2}
+  m_sharedMaterial: {fileID: -9133240071293022184, guid: c706afe98789c7542abf422c9e4506bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -835,8 +835,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Ball go Shoot
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c706afe98789c7542abf422c9e4506bb, type: 2}
+  m_sharedMaterial: {fileID: -9133240071293022184, guid: c706afe98789c7542abf422c9e4506bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1096,8 +1096,8 @@ MonoBehaviour:
 
     RTX'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c706afe98789c7542abf422c9e4506bb, type: 2}
+  m_sharedMaterial: {fileID: -9133240071293022184, guid: c706afe98789c7542abf422c9e4506bb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

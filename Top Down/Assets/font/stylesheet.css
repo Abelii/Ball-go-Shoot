@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Carino Sans';
+    src: url('CarinoSansRegular.eot');
+    src: local('Carino Sans'), local('CarinoSansRegular'),
+        url('CarinoSansRegular.eot?#iefix') format('embedded-opentype'),
+        url('CarinoSansRegular.woff2') format('woff2'),
+        url('CarinoSansRegular.woff') format('woff'),
+        url('CarinoSansRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Carino Sans';
+    src: url('CarinoSansSemiBold.eot');
+    src: local('Carino Sans SemiBold'), local('CarinoSansSemiBold'),
+        url('CarinoSansSemiBold.eot?#iefix') format('embedded-opentype'),
+        url('CarinoSansSemiBold.woff2') format('woff2'),
+        url('CarinoSansSemiBold.woff') format('woff'),
+        url('CarinoSansSemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Carino Sans';
+    src: url('CarinoSansBold.eot');
+    src: local('Carino Sans Bold'), local('CarinoSansBold'),
+        url('CarinoSansBold.eot?#iefix') format('embedded-opentype'),
+        url('CarinoSansBold.woff2') format('woff2'),
+        url('CarinoSansBold.woff') format('woff'),
+        url('CarinoSansBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+

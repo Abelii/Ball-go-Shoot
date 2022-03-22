@@ -107,7 +107,6 @@ public class PlayerMove : MonoBehaviour
 
     void MovementControls()
     {
-        print(diag);
         if(alive == true && diag == false)
         {
             if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
