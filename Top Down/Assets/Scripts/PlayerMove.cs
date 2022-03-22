@@ -101,6 +101,14 @@ public class PlayerMove : MonoBehaviour
             diag = true;
         } else if(Input.GetKey(KeyCode.S) && (Input.GetKey(KeyCode.D))){
             diag = true;
+        } else if(Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow)){
+            diag = true;
+        } else if(Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftArrow)){
+            diag = true;
+        } else if(Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.RightArrow)){
+            diag = true;
+        } else if(Input.GetKey(KeyCode.DownArrow) && Input.GetKey(KeyCode.LeftArrow)){
+            diag = true;
         } else {diag = false;}
 
     }
