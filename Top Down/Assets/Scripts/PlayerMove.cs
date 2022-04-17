@@ -28,6 +28,7 @@ public class PlayerMove : MonoBehaviour
     public int score;
     public int highScore;
     public bool isDying;
+    public int money;
     bool diag;
 
     bool isMinusTen;
@@ -51,6 +52,7 @@ public class PlayerMove : MonoBehaviour
         menuBTN.SetActive(false);
         score = 0;
         highScore = PlayerPrefs.GetInt("highScore");
+        money = PlayerPrefs.GetInt("money");
         healthText = healthObject.GetComponent<TextMeshProUGUI>();
         scoreText = scoreObject.GetComponent<TextMeshProUGUI>();
         scoreTextDie = YSW.GetComponent<TextMeshProUGUI>();
@@ -247,6 +249,8 @@ public class PlayerMove : MonoBehaviour
 
     void Die()
     {
+        money = score + PlayerPrefs.GetInt("money");
+        PlayerPrefs.SetInt("money", money);
         dmgPP.Stop();
         dmgPP.gameObject.SetActive(false);
         YSW.SetActive(true);

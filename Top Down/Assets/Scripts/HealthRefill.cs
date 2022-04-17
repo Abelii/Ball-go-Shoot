@@ -6,7 +6,7 @@ public class HealthRefill : MonoBehaviour{
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
             if(pm.health < 100){
-            pm.health += 100 - pm.health;
+            pm.health = 100;
             Destroy(GetComponent<SpriteRenderer>());
             Destroy(GetComponent<CircleCollider2D>());
             GetComponent<ParticleSystem>().Play();
@@ -17,3 +17,4 @@ public class HealthRefill : MonoBehaviour{
     void Destroy(){Destroy(gameObject);}
     void Update(){if(pm.alive == false){Destroy();}}
 }
+

@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     float sizeNumber;
     public GameObject am;
     public GameObject hp;
+    public GameObject mn;
     Rigidbody2D rb;
     void Start()
     {
@@ -56,10 +57,10 @@ public class Enemy : MonoBehaviour
                 isDying = true;
                 GetComponentInChildren<ParticleSystem>().Play();
                 GetComponentInChildren<AudioSource>().Play();
-                playerMove.score = playerMove.score += 1;
+                Instantiate(mn, new Vector2(transform.position.x + Random.Range(0.5f, -0.5f), transform.position.y + Random.Range(0.5f, -0.5f)), Quaternion.identity);
                 int ra = Random.Range(1, 18);
-                if(ra == 1 || ra == 3){Instantiate(am, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
-                if(ra == 2){Instantiate(hp, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);}
+                if(ra == 1 || ra == 3){Instantiate(am, new Vector2(transform.position.x + Random.Range(0.5f, -0.5f), transform.position.y + Random.Range(0.5f, -0.5f)), Quaternion.identity);}
+                if(ra == 2){Instantiate(hp, new Vector2(transform.position.x + Random.Range(0.5f, -0.5f), transform.position.y + Random.Range(0.5f, -0.5f)), Quaternion.identity);}
                 GameObject.Find("Spawner").GetComponent<Spawner>().enemyNumber--;
                 Invoke("Die", 0.4f);
                 Destroy(GetComponent<CircleCollider2D>());

@@ -5074,6 +5074,7 @@ MonoBehaviour:
   enemySpeed: 0
   am: {fileID: 6819277424998906300, guid: d86dfed716781c04ca239700df78196f, type: 3}
   hp: {fileID: 4862809221419566342, guid: 31d95d6b1a8b5da4f8b15adea6f6dac0, type: 3}
+  mn: {fileID: 9148116770659379917, guid: 5796c092cf1af214b94d95d81b3aac3d, type: 3}
 --- !u!58 &1704963138606663647
 CircleCollider2D:
   m_ObjectHideFlags: 0
