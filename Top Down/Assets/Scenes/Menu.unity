@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 278086172}
   - component: {fileID: 278086171}
   - component: {fileID: 278086170}
+  - component: {fileID: 278086173}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -184,10 +185,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.24090824, g: 1, b: 0.11764705, a: 1}
-    m_HighlightedColor: {r: 0.3872257, g: 1, b: 0.28930813, a: 1}
-    m_PressedColor: {r: 0.48504114, g: 1, b: 0.40251565, a: 1}
-    m_SelectedColor: {r: 0.2392157, g: 1, b: 0.11764707, a: 1}
+    m_NormalColor: {r: 1, g: 0.92423624, b: 0.11764705, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.99300903, b: 0.33647794, a: 1}
+    m_PressedColor: {r: 0.99061275, g: 1, b: 0.49685526, a: 1}
+    m_SelectedColor: {r: 1, g: 0.92549026, b: 0.11764707, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -245,6 +246,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 278086167}
   m_CullTransparentMesh: 1
+--- !u!114 &278086173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278086167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e03258923977204f8515424f4889051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &420351940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,8 +1705,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278226953
-  m_fontColor: {r: 0.034209874, g: 0.5660378, b: 0, a: 1}
+    rgba: 4278227641
+  m_fontColor: {r: 0.7264151, g: 0.5732982, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -11,6 +11,6 @@ public class PlayButton : MonoBehaviour
         pb.onClick.AddListener(NextScene);
     }
     void NextScene(){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
